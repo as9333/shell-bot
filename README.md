@@ -50,6 +50,11 @@ means, check out the [blog post][] for a full step-by-step guide.
 git clone https://github.com/botgram/shell-bot.git && cd shell-bot
 npm install
 ~~~
+If getting npm error "npm ERR! Host key verification failed"
+
+~~~
+npm install https://github.com/botgram/shell-bot.git
+~~~
 
 To start the bot:
 
