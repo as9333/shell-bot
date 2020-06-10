@@ -1,5 +1,6 @@
 # shell-bot
 
+THIS IS A FORK OF SHELL-BOT INCLUDING MY OWN COMMANDS. PLEASE REFER COMMANDS.TXT
 This is a fully functional shellrunner [Telegram bot][]. You tell it a
 command, it executes it and posts the live output. You can send input to the
 command by replying to the output messages.
