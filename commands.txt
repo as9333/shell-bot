@@ -20,3 +20,5 @@ help - Get help
 file - View and edit small text files
 upload - Upload and overwrite raw files
 r - Alias for /run or /enter
+open - opens ngrok tunnel arguments supported cldcmd (for cloudcommander docker container) and ssh
+wifi_devices - shows devices that are currently connected to wifi

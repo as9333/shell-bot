@@ -195,6 +195,53 @@ bot.command("run", function (msg, reply, next) {
   });
 });
 
+// MY EDIT STARTS ###################################################################
+bot.command("open", function (msg, reply, next) {
+  var args = msg.args();
+  console.log("DEBUG VALUES: FROM:%s ARGS: %s", msg.chat.name, args);
+  if (!args)
+    return reply.html("The /open command needs arguments cldcmd or ssh");
+
+  if (msg.context.command) {
+    var command = msg.context.command;
+    return reply.text("A command is already running.");
+  }
+
+  if (msg.editor) msg.editor.detach();
+  msg.editor = null;
+
+// Add the command that should be run in the shell here. My command is again called "process" which is an executable in /usr/local/bin/process
+  // var args = "ngrok start " + msg.args() + " > /dev/null &"; 
+  //var args = "ngrok start " + msg.args();  //APPENDING NGROK COMMANDS AND CONFIGS TO OPEN THE APPROPRIATE PORTS (THE MAIN COMMAND)
+  var args = "tunnel_starter " + msg.args(); //the tunnel_starter is a bash script localed in /usr/local/bin that starts the ngrok tunnel
+  msg.context.command = new Command(reply, msg.context, args);
+  
+  msg.context.command.on("exit", function() {
+    msg.context.command = null;
+  });
+});
+
+bot.command("wifi_devices", function (msg, reply, next) {  //shows devices currently connected to  wifi
+  var args = msg.args();
+
+  if (msg.context.command) {
+    var command = msg.context.command;
+    return reply.text("A command is already running.");
+  }
+
+  if (msg.editor) msg.editor.detach();
+  msg.editor = null;
+
+  var args = "python3 /root/pymiwifi/wifi_device_check.py"; //the tunnel_starter is a bash script localed in /usr/local/bin that starts the ngrok tunnel
+  msg.context.command = new Command(reply, msg.context, args);
+  
+  msg.context.command.on("exit", function() {
+    msg.context.command = null;
+  });
+});
+
+// MY EDIT STOPS ###################################################################
+
 // Editor start
 bot.command("file", function (msg, reply, next) {
   var args = msg.args();
